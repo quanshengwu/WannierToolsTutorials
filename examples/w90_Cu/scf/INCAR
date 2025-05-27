@@ -1,0 +1,10 @@
+SYSTEM = Cu metal
+ISTART = 0
+ICHARG = 2
+ENCUT = 300
+ISMEAR = 0
+SIGMA = 0.05
+#LWAVE = .FALSE.
+EDIFF = 1E-8
+PREC = Accurate
+

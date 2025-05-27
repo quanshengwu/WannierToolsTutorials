@@ -1,0 +1,28 @@
+set terminal pdf enhanced color font ",24" size 7,5
+set palette defined ( 0  "green", 5 "yellow", 10 "red" )
+set output 'band.pdf' 
+set style data linespoints
+unset key
+set pointsize 0.8
+#set xtics font ",20"
+#set ytics font ",15"
+#set ylabel font ",24"
+set ylabel offset 0.5,0
+set ytics format "%4f"
+set xrange [0:    3]
+emin=-16
+emax=12
+set border lw 3
+set ylabel "Energy (eV)"
+set yrange [ emin : emax ]
+set xtics ("{/Symbol G}" 0.00000,"Z" 0.329,"F" 1.213,"{/Symbol G}" 2.116,"L" 3)
+set ytics format "%4.1f"
+set arrow from    0.329, emin to    0.329, emax nohead lw 2
+set arrow from    1.213, emin to    1.213, emax nohead lw 2
+set arrow from    2.116, emin to    2.116, emax nohead lw 2
+# please comment the following lines to plot the fatband 
+# plot 'bulkek.dat' u 1:($2-0.016) w p pt 7 ps 0.4 lc rgb 'black', 0 w l lw 2 dt 2
+#plot 'BAND.dat' u 1:($2-4.408+4.4182) w l lt 7 lc rgb 'black',  0 w l lw 2 dt 2
+plot 'BAND.dat' u 1:2  w l lw 4 lc rgb 'black' title "VASP",\
+    'wannier90_band.dat' u 1:($2-4.408)  w p pt 6  ps 0.2 lc rgb 'red' title "WANNIER90", 0 w l lw 2 dt 2 notitle
+

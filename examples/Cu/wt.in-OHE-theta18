@@ -1,0 +1,62 @@
+&TB_FILE
+Hrfile = 'wannier90_hr.dat_nsymm48'
+/
+
+
+&CONTROL
+Boltz_OHE_calc        = T
+Symmetry_Import_calc = T ! please set it to be true for magnetoresistance calculation
+/
+
+&SYSTEM
+SOC = 0                ! without soc : SOC=0; with soc : SOC=1
+E_FERMI = 7.7083       ! e-fermi
+Btheta= 18, Bphi= 90    ! magnetic field direction, Btheta is the angle with z axial, Bphi is the angle with respect to x axial in the x-y plane
+NumOccupied = 6        ! set it anyway even don't use it.
+/
+
+&PARAMETERS
+OmegaNum = 1        ! omega number       
+OmegaMin = 0     ! energy interval
+OmegaMax = 0     ! energy interval E_i= OmegaMin+ (OmegaMax-OmegaMin)/(OmegaNum-1)*(i-1)
+EF_integral_range = 0.15
+Nk1 =41            ! Kmesh(1) for KCUBE_BULK
+Nk2 =41            ! Kmesh(2) for KCUBE_BULK
+Nk3 =41            ! Kmesh(3) for KCUBE_BULK
+BTauNum= 100        ! Number of B*tau we calculate
+BTauMax = 40.0      ! The maximum B*tau, starting from Btau=0.
+Tmin = 30           ! Temperature in Kelvin
+Tmax = 330          ! Temperature in Kelvin
+NumT = 11           ! number temperature we calculate. T_i=Tmin+(Tmax-Tmin)*(i-1)/(NumT-1)
+Nslice_BTau_Max = 20000 ! increase this number if negative magnetoresistance occurs, default =5000
+/
+
+LATTICE
+Angstrom
+   0.0000000   1.8075000   1.8075000
+   1.8075000   0.0000000   1.8075000
+   1.8075000   1.8075000   0.0000000
+
+ATOM_POSITIONS
+1                               ! number of atoms for projectors
+Cartisen                          ! Direct or Cartisen coordinate
+Cu    0.000000      0.000000      0.000000     
+
+PROJECTORS
+9            ! number of projectors
+Cu s s s  s s dxy dyz dzx dx2-y2 dz2 
+
+SURFACE            ! should be given even don't use
+ 1  0  0
+ 0  1  0
+
+SELECTEDBANDS
+1
+6
+
+KCUBE_BULK
+ 0.00  0.00  0.00   ! Original point for 3D k plane 
+ 1.00  0.00  0.00   ! The first vector to define 3d k space plane
+ 0.00  1.00  0.00   ! The second vector to define 3d k space plane
+ 0.00  0.00  1.00   ! The third vector to define 3d k cube
+

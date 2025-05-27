@@ -1,0 +1,14 @@
+ set encoding iso_8859_1
+ set terminal  postscript enhanced color font "Roman,36" 
+ set output 'wcc_slab_BdG_total.eps'
+#set size ratio -1 
+ set multiplot 
+ unset key
+ set border lw 1 
+ set xtics 0.05 nomirror 
+ set xtics ("k_y" 0, "-0.1{/Symbol p}" -0.05, "0.1{/Symbol p}" 0.05) 
+ set ytics 0.5 nomirror
+ set xrange [-0.05: 0.05]
+ set yrange [ 0.00: 1.00]
+ set ylabel "{/Symbol q}(2{/Symbol p})" rotate by 90 offset 2.8,0 
+ plot "wanniercenter_BdG_total.dat" u 1:2 w p  pt 7  ps 0.6 lc rgb "blue"

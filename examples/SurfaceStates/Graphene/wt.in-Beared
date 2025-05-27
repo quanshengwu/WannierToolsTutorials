@@ -1,0 +1,45 @@
+&TB_FILE
+Hrfile = 'Graphene_hr.dat'
+/
+
+&CONTROL
+SlabBand_calc = T
+/
+
+&SYSTEM
+SOC = 0                 ! soc
+E_FERMI =  -1.2533        ! e-fermi
+Nslab = 20
+/
+
+&PARAMETERS
+Nk1 = 101          ! number k points
+topsurface_atom_index = 1
+ 
+/
+
+LATTICE
+Angstrom
+2.1377110  -1.2342080   0.0000000        
+0.0000000   2.4684160   0.0000000        
+0.0000000   0.0000000   10.000000        
+
+ATOM_POSITIONS
+2                               ! number of atoms for projectors
+Direct                          ! Direct or Cartisen coordinate
+C 0.333333 0.666667 0.500000 C  ! topsurface_atom_index = 1
+C 0.666667 0.333333 0.500000 C  ! topsurface_atom_index = 2
+
+PROJECTORS
+1 1        ! number of projectors
+C  pz
+C  pz
+
+SURFACE
+1 0 0
+0 0 1
+
+KPATH_SLAB            ! k point path
+2              ! number of k line 
+M   0.5  0.0    G   0.0  0.0
+G   0.0  0.0    M   0.5  0.0 

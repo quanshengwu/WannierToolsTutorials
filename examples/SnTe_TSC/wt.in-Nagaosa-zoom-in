@@ -1,0 +1,72 @@
+&TB_FILE
+Hrfile = 'wannier90_hr.dat'      
+Package = 'VASP'             
+/
+
+LATTICE
+Angstrom
+  3.154500   -3.154500    0.000000
+  3.154500    3.154500    0.000000
+  0.000000    3.154500    3.154500
+
+ATOM_POSITIONS
+2                                  ! number of atoms for projectors
+Direct                             ! Direct or Cartisen coordinate
+ Sn   0.000000    0.000000    0.000000
+ Te   0.500000    0.500000    0.000000
+
+PROJECTORS
+ 3 3                               ! number of projectors
+Sn px py pz                        ! projectors
+Te px py pz
+
+SURFACE                           
+ 1  0  0
+ 0  1  0
+ 0  0  1
+
+&CONTROL
+BulkBand_calc         = F
+SlabBand_calc         = F
+SlabBdG_calc          = F
+BdGChern_calc         = T
+/
+
+&SYSTEM
+NSLAB = 40              
+NumOccupied = 6                    ! NumOccupied
+SOC = 1                            ! soc
+E_FERMI = 5.7035                   ! e-fermi
+Add_surf_zeeman_field = 1          ! Add zeeman field in bottom suface of slab system
+Add_Delta_BdG = 2                  ! Add s-wave superconducting gap in whole slab system
+mu_BdG  = 0.0                      ! The chemical potential of the BdG Hamiltonian
+Bx_surf = 0.0                      ! Suface zeeman field
+By_surf = 0.0                      ! Suface zeeman field
+Bz_surf = 0.1                      ! Suface zeeman field
+Delta_BdG = 0.1                    ! Uniform s-wave superconducting gap
+/
+
+&PARAMETERS
+Nk1 = 41                          ! number k points  odd number would be better
+Nk2 = 401                          ! number k points  odd number would be better
+/
+
+KPATH_BULK                         ! k point path
+7                                  ! number of k line only for bulk band
+X  0.000000  0.000000  0.500000   W  0.250000  0.250000  0.500000
+W  0.250000  0.250000  0.500000   L  0.500000  0.000000  0.000000
+L  0.500000  0.000000  0.000000   G  0.000000  0.000000  0.000000
+G  0.000000  0.000000  0.000000   X  0.000000  0.000000  0.500000
+X1 0.000000  1.000000  0.500000   K  0.000000  0.750000  0.375000
+K  0.000000  0.750000  0.375000   U  0.000000  0.250000  0.125000
+U  0.000000  0.250000  0.125000   G  0.000000  0.000000  0.000000
+
+KPATH_SLAB
+2                                  ! numker of k line for 2D case
+G 0.0 0.0 X 0.5 0.0
+X 0.5 0.0 M 0.5 0.5
+
+KPLANE_SLAB
+-0.5 -0.05                          ! Original point for 2D k plane
+ 1.0  0.0                          ! The first vector is used for integration. k1
+ 0.0  0.1                          ! The WCC is along this vector. k2
