@@ -1,0 +1,473 @@
+ -----------------------------------------------------------------------
+  W            W            W              TTTTTTTTTTTTTTTTTTTT         
+   W          W W          W                        TT                  
+    W        W   W        W                         TT                  
+     W      W     W      W                          TT                  
+      W    W       W    W                           TT                  
+       W  W         W  W                            TT                  
+        WW           WW                             TT                  
+        W             W                             TT                  
+                                                                        
+                        Welcome to WannierTools.                       
+                             Version 2.7.1     
+                   Tools for novel topological materials.               
+                          Enjoy it and good luck.                       
+                           Author : QuanSheng Wu                        
+                        Email : wuquansheng@gmail.com                   
+               Find more information on www.wanniertools.com            
+ =======================================================================
+                                                                        
+ You are using   684 CPU cores
+  
+   
+ >>>Read some paramters from wt.in
+ You are using : TB     model
+ Tight-binding Hamiltonian FROM: Hr File
+ Is_Sparse_Hr=  F
+ Tight-binding Hamiltonian filename : WS2_hr.dat               
+ System of particle: electron                 
+ Tight-binding Hamiltonian obtained from package : VASP                     
+   
+ >>>Control parameters: 
+ BulkBand_line_calc                :  F
+ BulkBand_plane_calc               :  F
+ Landaulevel_unfold_line_calc      :  F
+ BulkBand_unfold_line_calc         :  F
+ BulkBand_unfold_plane_calc        :  F
+ QPI_unfold_plane_calc             :  F
+ BulkFatBand_calc                  :  F
+ BulkBand_cube_calc                :  F
+ BulkFS_calc                       :  F
+ BulkFS_Plane_calc                 :  F
+ BulkFS_plane_stack_calc           :  F
+ BulkGap_cube_calc                 :  F
+ BulkGap_plane_calc                :  F
+ SlabBand_calc                     :  F
+ SlabBandWaveFunc_calc             :  F
+ SlabSS_calc                       :  F
+ SlabArc_calc                      :  F
+ SlabSpintexture_calc              :  F
+ wanniercenter_calc                :  F
+ Wilsonloop_calc                   :  F
+ BerryPhase_calc                   :  F
+ BerryCurvature_calc               :  F
+ BerryCurvature_EF_calc            :  F
+ BerryCurvature_kpath_EF_calc      :  F
+ BerryCurvature_kpath_Occupied_calc:  F
+ BerryCurvature_Cube_calc          :  F
+ BerryCurvature_slab_calc          :  F
+ Dos_calc                          :  F
+ Z2_3D_calc                        :  F
+ WeylChirality_calc                :  F
+ NLChirality_calc                  :  F
+ Chern_3D_calc                     :  F
+ MirrorChern_calc                  :  F
+ JDos_calc                         :  F
+ FindNodes_calc                    :  F
+ EffectiveMass_calc                :  F
+ AHC_calc                          :  F
+ SHC_calc                          :  F
+ Boltz_OHE_calc                    :  F
+ Boltz_Berry_correction            :  F
+ LOTO_correction                   :  F
+ OrbitalTexture_calc               :  F
+ OrbitalTexture_3D_calc            :  F
+ LandauLevel_k_calc                :  F
+ LandauLevel_B_calc                :  F
+ LandauLevel_wavefunction_calc     :  F
+ Fit_kp_calc                       :  F
+ DMFT_MAG_calc                     :  F
+ Translate_to_WS_calc              :  F
+ LandauLevel_kplane_calc           :  F
+ LandauLevel_k_dos_calc            :  F
+ LandauLevel_B_dos_calc            :  F
+ FermiLevel_calc                   :  F
+ ANE_calc                      :  F
+ Symmetry_Import_calc              :  F
+ ChargeDensity_selected_bands_calc :  F
+ ChargeDensity_selected_energies_calc :  F
+ valley_projection_calc :  F
+ SlabBdG_calc        :  F
+ BdGChern_calc       :  F
+ linear_optic_calc        :  F
+ BPVE_calc       :  T
+ Warning: Numoccupied is set to 1 since you didn't set it!
+   
+ >>>System parameters: 
+ NumSlabs :    10
+ Nslab1 for ribbon  :     1
+ Nslab2 for ribbon  :     1
+ Number of Occupied bands:     1
+ Number of total electrons:    2.000000
+ With SOC or not in Hrfile:     0
+ Fermi energy (eV) :        2.216400
+ surf_onsite (eV):         0.000000
+ Add_Zeeman_Field:  F
+ Add_surf_zeeman_field for slab system:      1
+ Zeeman_energy_in_eV (eV):         0.000000
+ Electric_field_in_eVpA (eV/Angstrom):         0.000000
+ Symmetrical_Electric_field_in_eVpA (eV/Angstrom):         0.000000
+ Inner_symmetrical_Electric_Field:  F
+ ijmax :    10
+   
+ **Notes**: There are two ways to specify magnetic field.
+ 1. specify Bmagnitude, Btheta, Bphi
+ 2. specify Bx, By, Bz
+ Bmagnitude, Bx, By, Bz are real numbers in unit of Tesla. and Bx, By, Bz 
+ are in the cartesian coordinates. Btheta is the angle with z axial 
+  and Bphi is the angle with respect to x axial in the x-y plane
+  Btheta is in [0, 180], Bphi is in [0, 360).
+ If you specify both of them together, we will choose the first one.
+ If choose the first one, but not specify Btheta, Bphi, then 
+ by default we set Btheta=0, Bphi=0 which means B is along z direction.
+ Bx_surf, By_surf, Bz_surf :        0.000000        0.000000        0.000000
+ Chemical potential mu for BdG (eV):        0.000000
+ Add_Delta_BdG for slab system:      3
+ s-wave superconducting pairing Delta (eV):         0.000000
+  
+  Warning: You didn't specify the magnitude of magnetic field.
+  
+ >>You did not specified the magnitude of magnetic field, 
+  and also didn't set Bx, By, Bz. So we will set the magnetic direction
+  from the settings of Btheta, Bphi.
+  If you even didn't set Btheta, Bphi, we will take the default value, 
+  Btheta=0, Bphi=0 which means B is along z direction
+ >>You didn't set Btheta, and we set it to 0.
+ >>You didn't set Bphi, and we set it to 0.
+ Bmagnitude (in Tesla) :        1.000000
+ Btheta, Bphi :        0.000000        0.000000
+ Bx, By, Bz (in Tesla) :        0.000000        0.000000        1.000000
+ B direction cosines :        0.000000        0.000000        1.000000
+   
+ >>>calculation parameters : 
+ iso_energy :          0.00000 eV
+ Fermi_broadening :          0.00500 eV
+ symprec :          0.00010
+ EF_integral_range :          0.05000 eV
+ Gap_threshold         0.01000 eV
+ OmegaMin :         -1.00000 eV
+ OmegaMax :          1.00000 eV
+ OmegaNum :    100
+ OmegaNum_unfold :    200
+ Nk1 :   1000
+ Nk2 :   1000
+ Nk3 :      1
+ NP number of principle layers  :      2
+ Tmin(Kelvin)  :        100.00000
+ Tmax(Kelvin)  :        100.00000
+ NumT  :      1
+ NBTau  :      1
+ Beta  :        100.00000
+ Nslice_BTau_Max  :   5000
+ BTauMax(Tesla.ps)         0.00000
+ Relaxation_Time_Tau (ps)         1.00000
+ Rcut    999999.00000
+ Magp               1
+ iprint_level               1
+ RKF45_PERIODIC_LEVEL            1.00
+ Magp_min               0
+ Magp_max               1
+ nnzmax_input              -1
+ wcc_calc_tol         0.08000
+ wcc_neighbour_tol         0.30000
+ NumLCZVecs   100
+ NumSelectedEigenVals     0
+ NumRandomConfs:     1
+ Projection weight mode:NORMAL              
+ The size of magnetic supercell is Magq= :      10
+ Penetration depth of incoming photon for ARPES, in unit angstrom :         5.00000
+ Photon energy for ARPES, in unit eV :         0.00000
+ Incoming light is at alpha angular to the normal line of the experiment plane :         0.78540
+ The ratio between two orthogonal polarization vector components         0.00000
+ The relative phase between two orthogonal polarization vector components         0.00000
+ FreqMin :          0.00000 eV
+ FreqMax :          3.50000 eV
+ FreqNum :    500
+ eta_smr_fixed :          0.02000 eV
+  
+ We found LATTICE card
+>> lattice information (Angstrom)
+           a           b           c       alpha        beta       gamma
+    3.190700    3.190700   14.202400   90.000000   90.000000  120.000000
+ Three Lattice vectors of the unfolded cell: 
+    3.190700    0.000000    0.000000
+   -1.595350    2.763227    0.000000
+    0.000000    0.000000   14.202400
+>> Reciprocal lattice information (1/Angstrom)
+           a           b           c       alpha        beta       gamma
+    2.273858    2.273858    0.442403  170.075351  170.075351  113.383567
+ Three reciprocal lattice vectors of the primitive cell: 
+    1.969218    1.136929    0.000000
+    0.000000    2.273858    0.000000
+    0.000000    0.000000    0.442403
+  
+ We found ATOM_POSITIONS card
+Origin_cell%Num_atoms    3
+  
+ Warning: You didn't specify the atom magnetic moment in the ATOMIC_POSITION car
+ d Or the format is wrong. So we set all the Atom-magnetic-moments to zero.
+ 
+>> Atom position and magnetic moment of Original lattice
+                                    Catesian(Ang)                  Fractional(Direct)         Magnetic moment
+------------------------------------------------------------------------------------------------------------------
+ index  Atom Name            x           y           z           a           b           c      Mx      My      Mz
+------------------------------------------------------------------------------------------------------------------
+     1  W             0.666667    0.333333    0.500000    0.269257    0.120632    0.035205   0.000   0.000   0.000
+     2  S             0.000000    0.000000    0.389250    0.000000    0.000000    0.027407   0.000   0.000   0.000
+     3  S             0.000000    0.000000    0.610750    0.000000    0.000000    0.043003   0.000   0.000   0.000
+  
+ We found PROJECTORS card
+ >>Number of projectors per atoms:
+     5     3     3
+W       dxy     dyz     dxz     dx2-y2  dz2     
+S       pz      px      py      
+S       pz      px      py      
+  
+ >> Wannier centers by default, in unit of unit lattice vectors
+ iwann        R1        R2        R3         x         y         z
+     1  0.269257  0.120632  0.035205  0.666667  0.333333  0.500000
+     2  0.269257  0.120632  0.035205  0.666667  0.333333  0.500000
+     3  0.269257  0.120632  0.035205  0.666667  0.333333  0.500000
+     4  0.269257  0.120632  0.035205  0.666667  0.333333  0.500000
+     5  0.269257  0.120632  0.035205  0.666667  0.333333  0.500000
+     6  0.000000  0.000000  0.027407  0.000000  0.000000  0.389250
+     7  0.000000  0.000000  0.027407  0.000000  0.000000  0.389250
+     8  0.000000  0.000000  0.027407  0.000000  0.000000  0.389250
+     9  0.000000  0.000000  0.043003  0.000000  0.000000  0.610750
+    10  0.000000  0.000000  0.043003  0.000000  0.000000  0.610750
+    11  0.000000  0.000000  0.043003  0.000000  0.000000  0.610750
+ We didn't found LATTICE_UNFOLD card, so it is the same as the unit cell.
+>> Folded lattice information (Angstrom)
+           a           b           c       alpha        beta       gamma
+    3.190700    3.190700   14.202400   47.625949   47.625949   63.501265
+ Three Lattice vectors of unfolded cell: 
+    3.190700    0.000000    0.000000
+   -1.595350    2.763227    0.000000
+    0.000000    0.000000   14.202400
+>> Folded Reciprocal lattice information (1/Angstrom)
+           a           b           c       alpha        beta       gamma
+    2.273858    2.273858    0.442403  170.075351  170.075351  113.383567
+ Three reciprocal lattice vectors of unfolded cell: 
+    1.969218    1.136929    0.000000
+    0.000000    2.273858    0.000000
+    0.000000    0.000000    0.442403
+ 
+>> The relation between the original lattice and the unfolded lattice
+>> The cell volume ratio is:     1.000000
+>> The lattice constant a ratio is:     1.000000
+>> The lattice constant b ratio is:     1.000000
+>> The lattice constant c ratio is:     1.000000
+>> Origin_cell in unit of Folded_cell: R1      1.000000    0.000000    0.000000
+>> Origin_cell in unit of Folded_cell: R2      0.000000    1.000000    0.000000
+>> Origin_cell in unit of Folded_cell: R3      0.000000    0.000000    1.000000
+ 
+ 
+>>> Atom position and magnetic moment of Unfolded lattice
+                                    Catesian(Ang)                  Fractional(Direct)         Magnetic moment
+------------------------------------------------------------------------------------------------------------------
+ index  Atom Name            x           y           z           a           b           c      Mx      My      Mz
+------------------------------------------------------------------------------------------------------------------
+     1  W             0.666667    0.333333    0.500000    0.269257    0.120632    0.035205   0.000   0.000   0.000
+     2  S             0.000000    0.000000    0.389250    0.000000    0.000000    0.027407   0.000   0.000   0.000
+     3  S             0.000000    0.000000    0.610750    0.000000    0.000000    0.043003   0.000   0.000   0.000
+ Warnning: You didn't set SURFACE card, by default, it's (001) surface.
+ The 1st vector on surface     :    1.000000    0.000000    0.000000
+ The 2nd vector on surface     :    0.000000    1.000000    0.000000
+ The 3rd vector out of surface :    0.000000    0.000000    1.000000
+  
+ The rotated new unit cell in cartesian coordinates : 
+    3.190700    0.000000    0.000000
+   -1.595350    2.763227    0.000000
+    0.000000    0.000000   14.202400
+New cell's Volume is          125.21730Ang^3
+  
+ Fractional coordinates of atoms in units of new lattice vectors : 
+W       0.269257    0.120632    0.035205
+S       0.000000    0.000000    0.027407
+S       0.000000    0.000000    0.043003
+  
+ 
+ >> Top surface atom is      3 S         
+ 
+ 2D Primitive Cell_Volume:    8.81662950481088     
+ Ra2, Rb2
+    3.1907    0.0000
+   -1.5954    2.7632
+ Ka2, Kb2
+    0.5514    0.3184
+    0.0000    0.6367
+>> lattice information of the magnetic supercell (Angstrom)
+    3.190700    0.000000    0.000000
+   -1.595350    2.763227    0.000000
+    0.000000    0.000000  142.024002
+>> Reciprocal lattice information of the magnetic supercell (1/Angstrom)
+    1.969218    1.136929    0.000000
+    0.000000    2.273858    0.000000
+    0.000000    0.000000    0.044240
+  
+3D Primitive Origin_cell%CellVolume:     125.21730071 in Angstrom^3
+3D Magnetic supercell Volume:    1252.17300709 in Angstrom^3
+Projected area of magnetic supercell normal to the first vector specifed in SURFACE card:    1401.44510792 in Angstrom^2
+ >> Kpoints plane for 2D system--> arcs  
+K2D_start: -0.5000 -0.5000
+The first vector:   1.0000  0.0000
+The second vector:   0.0000  1.0000
+ >> Kpoints plane for 3D system--> gapshape  
+k3D_start :   0.0000  0.0000  0.0000
+The 1st vector:   1.0000  0.0000  0.0000
+The 2nd vector:   0.0000  0.5000  0.0000
+ >> Kpoints cube for 3D system--> gapshape3D  
+k3D_start :  0.0000  0.0000  0.0000
+The 1st vector:   1.0000  0.0000  0.0000
+The 2nd vector:   0.0000  1.0000  0.0000
+The 3rd vector:   0.0000  0.0000  1.0000
+kCubeVolume:   1.9810
+ReciprocalOrigin_cell%CellVolume:   1.9810
+  
+  
+ >> Using default parameters for Kpoint_3D
+>> k points  0.0000 0.0000 0.0000 in unit of reciprocal primitive cell
+>> k points  0.0000 0.0000 0.0000 in Cartesian coordinates
+  
+ >> Using default parameters for effective mass calculation
+ >> Effective mass calculation parameters  
+>> The     1'th band
+>> k step  0.0100 in unit of 1/Angstrom
+>> k points  0.0000 0.0000 0.0000 in unit of reciprocal primitive cell
+>> k points  0.0000 0.0000 0.0000 in unit of 1/Angstrom
+  
+ >> We use the default values for k3points_pointmode_direct=[0,0,0]
+ >> and Nk3_point_mode = 1
+  
+ >> We use the default values for k3points_unfold_pointmode_direct=[0,0,0]
+ >> and Nk3_unfold_point_mode = 1
+  
+ >> We use the default values for Single_KPOINT_2D_DIRECT=[0,0]
+  
+ >> We use the default values for Single_KPOINT_3D_DIRECT=[0,0,0]
+ >> Output all atoms weight for surface state spectrum
+ > NtopAtoms            3
+> TopAtoms 
+     1     2     3
+> NbottomAtoms          3
+> BottomAtoms 
+     1     2     3
+ > NtopOrbitals           11
+> TopOrbitals 
+     1     2     3     4     5     6     7     8     9    10
+    11
+> NBottomOrbitals   11
+> BottomOrbitals 
+     1     2     3     4     5     6     7     8     9    10
+    11
+  
+ >> We do not calculate chirality for nodal lines
+  
+ >> We do not calculate chirality for weyl points
+  
+>> There are    1 groups of SelectedAtoms
+Group :   1
+>> Number of atoms selected         3
+>> Selected atoms are
+    1  W             2  S             3  S         
+  
+>> There are   1 groups of SelectedOrbitals
+ >> SelectedOrbitals
+>> Number of orbitals selected (exclude spin degenarcy)        11
+>> Orbitals are
+       1       2       3       4       5       6       7       8       9      10      11
+  
+ >> SELECTED_OCCUPIED_BANDS
+>> Number of Occupied bands selected          1
+>> OccupiedBand indices are
+     1
+  
+  
+ >> SELECTEDBANDS
+>> Number of bands selected         11
+>> Band indices are
+     1     2     3     4     5     6     7     8     9    10    11
+  
+ <<<Read wt.in file successfully
+ Time cost for readinput is about            0.129 s
+  
+ >> We finished the symmetry reducing of the kpoints in the kcube
+  Number of kpoints mesh is    1000000
+  Number of symmetry reduced kpoints is          0
+  
+ Time cost for symmetry is about            0.000 s
+  >> Begin to read Hmn_R.data
+  
+>>: Center position for zero electrical potential for adding electrical field    0.089752    0.040211    0.035205
+ 
+  Note: This is not a 2D system or E=0, so we can't add electric field.
+ 
+ 
+ >> Hopping parameters in the home unit cell
+ >> H00= Hmn(R=0) real part
+ -0.896  0.000  0.000 -0.002  0.000  0.699 -0.621 -0.359 -0.699 -0.621 -0.359
+  0.000  0.293  0.000  0.000  0.000 -0.909 -1.100 -0.988 -0.909  1.100  0.988
+  0.000  0.000  0.280  0.000  0.000 -0.524 -0.992  0.043 -0.524  0.992 -0.043
+ -0.002  0.000  0.000 -0.741 -0.000 -0.364  0.226 -0.945  0.364  0.226 -0.945
+  0.000  0.000  0.000 -0.000 -0.741 -0.631 -0.684  0.226  0.631 -0.684  0.226
+  0.699 -0.909 -0.524 -0.364 -0.631 -2.824 -0.000 -0.002  1.094  0.000  0.000
+ -0.621 -1.100 -0.992  0.226 -0.684 -0.000 -2.567 -0.000 -0.000 -0.452  0.000
+ -0.359 -0.988  0.043 -0.945  0.226 -0.002 -0.000 -2.573 -0.000  0.000 -0.449
+ -0.699 -0.909 -0.524  0.364  0.631  1.094 -0.000 -0.000 -2.824  0.000  0.002
+ -0.621  1.100  0.992  0.226 -0.684  0.000 -0.452  0.000  0.000 -2.567 -0.000
+ -0.359  0.988 -0.043 -0.945  0.226  0.000  0.000 -0.449  0.002 -0.000 -2.573
+ 
+ >> H00= Hmn(R=0) imagary part
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000
+ 
+  << Read Hmn_R.data successfully
+  
+ >> Start of calculating the bulk photovotaic effect
+ik/knv3                 1/           1000000  time left      0.00s
+ik/knv3             68401/           1000000  time left     35.72s
+ik/knv3            136801/           1000000  time left     33.22s
+ik/knv3            205201/           1000000  time left     30.54s
+ik/knv3            273601/           1000000  time left     27.87s
+ik/knv3            342001/           1000000  time left     25.19s
+ik/knv3            410401/           1000000  time left     22.60s
+ik/knv3            478801/           1000000  time left     19.96s
+ik/knv3            547201/           1000000  time left     17.38s
+ik/knv3            615601/           1000000  time left     14.72s
+ik/knv3            684001/           1000000  time left     12.10s
+ik/knv3            752401/           1000000  time left      9.53s
+ik/knv3            820801/           1000000  time left      6.89s
+ik/knv3            889201/           1000000  time left      4.28s
+ik/knv3            957601/           1000000  time left      1.64s
+ <<< The Bulk Photovoltaic Effect calculation finished
+ 
+ Time cost for BPVE_calc is about           42.664 s
+ End of calculating the bulk photovotaic effect
+  
+ Time cost for whole program is about           42.854 s
+  
+  
+  =======================================================================
+  Congratulations! you finished the calculation.
+  I hope you could find something useful from this calculation.
+  If so, I would like to ask you to cite our this paper:
+  
+  WannierTools : An open-source software package for novel topological materials
+  QuanSheng Wu and ShengNan Zhang and Hai-Feng Song and Matthias Troyer and Alexey A. Soluyanov
+  Computer Physics Communications 224, 405 (2018)
+  https://doi.org/10.1016/j.cpc.2017.09.033
+  
+  For bugs, please report to wuquansheng@gmail.com                   
+  or wanniertools@groups.google.com.                 
+  More information could find on www.wanniertools.com            
+  See you next time :)
+  =======================================================================

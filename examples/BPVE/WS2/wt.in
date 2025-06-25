@@ -1,0 +1,42 @@
+&TB_FILE
+Hrfile = 'WS2_hr.dat'
+/
+
+&CONTROL
+BPVE_calc         = T
+/
+
+&SYSTEM
+SOC = 0   
+E_FERMI =  2.2164
+
+/
+
+&PARAMETERS
+Nk1 = 200          ! number k points 
+Nk2 = 200
+Nk3 = 1
+FreqMin=0
+FreqMax=3.5
+FreqNum=500
+eta_smr_fixed=0.02
+/
+
+LATTICE
+Angstrom
+        3.1907000542         0.0000000000         0.0000000000
+       -1.5953500271         2.7632273028         0.0000000000
+        0.0000000000         0.0000000000        14.2024002075
+
+ATOM_POSITIONS
+3                              ! number of atoms for projectors
+Cartesian                         ! Direct or Cartisen coordinate
+W     0.666666687         0.333333373         0.500000000
+S     0.000000000         0.000000000         0.389250010
+S     0.000000000         0.000000000         0.610749960
+
+PROJECTORS
+5 3 3     ! number of projectors
+W dxy dyz dxz dx2-y2 dz2 
+S pz px py
+S pz px py

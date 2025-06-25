@@ -1,0 +1,11 @@
+The following results were obtained with a k-point density of 1800×1800×1
+
+&PARAMETERS
+Nk1 = 1800          ! number k points 
+Nk2 = 1800         ! number k points 
+Nk3 = 1            ! number k points 
+FreqMin=0
+FreqMax=1
+FreqNum=400
+eta_smr_fixed=0.02
+/

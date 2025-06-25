@@ -50,4 +50,4 @@ if __name__ == '__main__':
         ca_num = str(int(dir_name_num))
         #dir_name = 'Btheta' + str(dir_name_num) + 'Bphi90'
         dir_name = 'Btheta90'+ 'Bphi' + str(dir_name_num) 
-        extract_different_temp_data('./{}/rho_total_mu_0.00eV.dat'.format(dir_name), ca_num=ca_num, output_dir='rho')
+        extract_different_temp_data('./{}/rho_total_mu_0.0meV.dat'.format(dir_name), ca_num=ca_num, output_dir='rho')

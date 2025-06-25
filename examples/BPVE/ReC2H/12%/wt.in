@@ -1,0 +1,44 @@
+&TB_FILE
+Hrfile = 'ReC2H_hr.dat'
+Package = 'QE'
+/
+
+&CONTROL
+BPVE_calc         = T
+/
+
+&SYSTEM
+NumOccupied = 16        ! NumOccupied
+SOC = 1                ! soc 0 non-spinpolarizaed 1 spin-polarized
+E_FERMI = -0.9645
+/
+
+&PARAMETERS
+Nk1 = 200          ! number k points 
+Nk2 = 200        ! number k points 
+Nk3 = 1            ! number k points 
+FreqMin=0
+FreqMax=1
+FreqNum=400
+eta_smr_fixed=0.02
+/
+
+LATTICE
+ Angstrom
+   3.3617999554         0.0000000000         0.0000000000
+  -1.6808999777         2.9114041638         0.0000000000
+   0.0000000000         0.0000000000        15.0000000000
+ATOM_POSITIONS
+4                              ! number of atoms for projectors
+Direct                          ! Direct or Cartisen coordinate
+Re  0.666666687         0.333333343          0.496069998
+C   0.000000000         0.000000000          0.581359982
+C   0.000000000         0.000000000          0.429720014
+H   0.000000000         0.000000000          0.654380023
+
+PROJECTORS
+5 4 4 1       ! number of projectors
+Re dxy dyz dxz dx2-y2 dz2         ! projectors
+C  s   px py pz
+C  s   px py pz
+H  s

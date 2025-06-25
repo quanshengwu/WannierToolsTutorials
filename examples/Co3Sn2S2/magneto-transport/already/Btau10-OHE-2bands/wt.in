@@ -1,0 +1,76 @@
+&TB_FILE
+Hrfile = 'wannier90_hr.dat'
+Package = 'VASP'
+/
+
+
+&CONTROL
+Boltz_OHE_calc        = T
+Symmetry_Import_calc = T ! please set it to be true for magnetoresistance calculation
+/
+
+&SYSTEM
+SOC = 1                ! without soc : SOC=0; with soc : SOC=1
+E_FERMI = 9.6429
+!E_FERMI = 9.6417       ! e-fermi
+Btheta= 0, Bphi= 90    ! magnetic field direction, Btheta is the angle with z axial, Bphi is the angle with respect to x axial in the x-y plane
+NumOccupied = 39        ! set it anyway even don't use it.
+/
+
+&PARAMETERS
+OmegaNum = 1        ! omega number
+OmegaMin =  0.0     ! energy interval
+OmegaMax =  0.0     ! energy interval
+Nk1 =41            ! Kmesh(1) for KCUBE_BULK
+Nk2 =41            ! Kmesh(2) for KCUBE_BULK
+Nk3 =41            ! Kmesh(3) for KCUBE_BULK
+BTauNum = 101        ! Number of B*tau we calculate
+BTauMax = 10      ! The maximum B*tau, starting from Btau=0.
+Tmin = 20           ! Temperature in Kelvin
+Tmax = 50          ! Temperature in Kelvin
+NumT = 4            ! number temperature we calculate. T=Tmin+(Tmax-Tmin)/(NumT-1)
+Nslice_BTau_Max = 5000
+EF_integral_range=0.02
+/
+
+LATTICE
+Angstrom
+     2.6841499805334412    1.5496947138063106    4.3927666346333325
+    -2.6841499805334408    1.5496947138063106    4.3927666346333325
+     0.0000000000000000   -3.0993894276126217    4.3927666346333325
+
+ATOM_POSITIONS
+7                               ! number of atoms for projectors
+Direct                          ! Direct or Cartisen coordinate
+Co  0.5000000300297787  0.5000000061036406 -0.0000000307777755
+Co  0.0000001209861480  0.5000000490272370  0.4999998491062711
+Co  0.4999998014076746  0.0000001014359721  0.5000000910002145
+Sn  0.4999999877968310  0.4999999993431472  0.4999999906763744
+Sn  0.0000000669156023 -0.0000000910389085  0.0000000102488826
+S   0.2193871562189014  0.2193886211358385  0.2193871577761214
+S   0.7806128366450640  0.7806113139930733  0.7806129319699117
+
+PROJECTORS
+5 5 5 3 3 3 3            ! number of projectors
+Co dz2 dxz dyz dx2-y2 dxy
+Co dz2 dxz dyz dx2-y2 dxy
+Co dz2 dxz dyz dx2-y2 dxy
+Sn pz px py
+Sn pz px py
+S  pz px py
+S  pz px py
+
+SURFACE            ! should be given even don't use
+ 1  0  0
+ 0  1  0
+
+SELECTEDBANDS
+2
+39 40
+
+KCUBE_BULK
+ 0.00  0.00  0.00   ! Original point for 3D k plane
+ 1.00  0.00  0.00   ! The first vector to define 3d k space plane
+ 0.00  1.00  0.00   ! The second vector to define 3d k space plane
+ 0.00  0.00  1.00   ! The third vector to define 3d k cube
+

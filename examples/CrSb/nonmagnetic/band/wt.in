@@ -1,0 +1,48 @@
+&TB_FILE
+Hrfile = 'wannier90_hr.dat'
+/
+
+LATTICE
+Angstrom
+       4.103000            0.000000            0.000000     
+      -2.051500            3.553302            0.000000     
+       0.000000            0.000000            5.463000     
+
+ATOM_POSITIONS
+4                               ! number of atoms for projectors
+Direct                          ! Direct or Cartisen coordinate
+Cr    0.0    0.0    0.0
+Cr    0.0    0.0    0.5
+Sb    0.33333333    0.66666667    0.25
+Sb    0.66666667    0.33333333    0.75
+
+PROJECTORS
+5 5 3 3            ! number of projectors
+Cr  dxy dyz dzx dx2-y2 dz2 
+Cr  dxy dyz dzx dx2-y2 dz2 
+Sb  pz px py
+Sb  pz px py
+
+&CONTROL
+BulkBand_calc         = T
+/
+
+&SYSTEM
+NumOccupied = 18         ! NumOccupied
+SOC = 1                 ! soc
+E_FERMI = 7.502819        ! e-fermi
+/
+
+&PARAMETERS
+Nk1 =55              ! number k points  odd number would be better
+/
+
+KPATH_BULK            ! k point path
+7              ! number of k line only for bulk band
+ G  0.00000  0.00000  0.00000   M  0.00000  0.50000  0.00000  
+ M  0.00000  0.50000  0.00000   K -0.33333  0.66667  0.00000 
+ K -0.33333  0.66667  0.00000   G  0.00000  0.00000  0.00000  
+ G  0.00000  0.00000  0.00000   A  0.00000  0.00000  0.50000  
+ A  0.00000  0.00000  0.50000   L  0.00000  0.50000  0.50000
+ L  0.00000 0.50000 0.50000     H -0.33333  0.66667  0.50000  
+ H -0.33333  0.66667  0.50000   A -0.00000  0.00000  0.50000  

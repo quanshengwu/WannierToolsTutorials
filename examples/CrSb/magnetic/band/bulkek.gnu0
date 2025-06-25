@@ -1,0 +1,29 @@
+set terminal pdf enhanced color font "Times-New-Roman,22" #size 10,5
+set palette defined ( 0  "green", 5 "yellow", 10 "red" )
+set output 'band.pdf' 
+set style data linespoints
+unset key
+set ytics nomirror
+set xtics nomirror
+set pointsize 0.8
+set xtics offset 0,0.5
+set ylabel offset 1.8,0
+set ytics format "%4f"
+set xrange [0:    5.40606]
+set cbtics 1
+emin=-400
+emax=400
+set border lw 3
+set ylabel "E-E_f (meV)"
+set yrange [ emin : emax ]
+set ytics 200
+set xtics ("{/Symbol G}"    0.00000,"M"    0.88413,"K"    1.39458,"{/Symbol G}"    2.41550,"A"    2.99056,"L"    3.87470,"H"    4.38515,"A"    5.40606)
+set arrow from    0.88413, emin to    0.88413, emax nohead
+set arrow from    1.39458, emin to    1.39458, emax nohead
+set arrow from    2.41550, emin to    2.41550, emax nohead
+set arrow from    2.99056, emin to    2.99056, emax nohead
+set arrow from    3.87470, emin to    3.87470, emax nohead
+set arrow from    4.38515, emin to    4.38515, emax nohead
+set ytics format "%4.1f"
+plot 'bulkek.dat' u 1:(($2-0)*1000) w l lw 2.5 lc rgb 'black', 0 w l lw 2 dt 2
+

@@ -77,28 +77,29 @@ KCUBE_BULK
  0.00  0.00  1.00   ! The third vector to define 3d k cube
 EOF
 
-cat>$dir/wt-theta.sh<<EOF2
-#!/bin/bash
-#SBATCH -J $phi
-#SBATCH -p wzhctdnormal
-#SBATCH -N 1
-#SBATCH --ntasks-per-node=2
-#SBATCH -o out
-#SBATCH -e error
+#cat>$dir/wt-theta.sh<<EOF2
+##!/bin/bash
+##SBATCH -J $phi
+##SBATCH -p wzhctdnormal
+##SBATCH -N 1
+##SBATCH --ntasks-per-node=2
+##SBATCH -o out
+##SBATCH -e error
+#
+#module purge
+#module load compiler/intel/2021.3.0
+#module load mpi/intelmpi/2021.3.0
+#
+#export I_MPI_PMI_LIBRARY=/opt/gridview/slurm/lib/libpmi.so
+#export PATH=~/wt2024/bin:$PATH
+#
+#srun --mpi=pmi2 wt.x
+#EOF2
 
-module purge
-module load compiler/intel/2021.3.0
-module load mpi/intelmpi/2021.3.0
-
-export I_MPI_PMI_LIBRARY=/opt/gridview/slurm/lib/libpmi.so
-export PATH=~/wt2024/bin:$PATH
-
-srun --mpi=pmi2 wt.x
-EOF2
-
+cp ~/data/wt2025/sub-wt.sh $dir/
 cp wannier90_hr.dat_nsymm48 $dir/
 cd $dir
-sbatch wt-theta.sh
+sbatch sub-wt.sh
 cd ..
 done
 

@@ -1,0 +1,52 @@
+&TB_FILE
+Hrfile = 'wannier90_hr.dat'
+/
+
+LATTICE
+Angstrom
+       4.103000            0.000000            0.000000     
+      -2.051500            3.553302            0.000000     
+       0.000000            0.000000            5.463000     
+
+ATOM_POSITIONS
+4                               ! number of atoms for projectors
+Direct                          ! Direct or Cartisen coordinate
+Cr    0.0    0.0    0.0
+Cr    0.0    0.0    0.5
+Sb    0.33333333    0.66666667    0.25
+Sb    0.66666667    0.33333333    0.75
+
+PROJECTORS
+5 5 3 3            ! number of projectors
+Cr  dxy dyz dzx dx2-y2 dz2 
+Cr  dxy dyz dzx dx2-y2 dz2 
+Sb  pz px py
+Sb  pz px py
+
+&CONTROL
+AHC_calc = T
+/
+
+&SYSTEM
+NumOccupied = 18         ! NumOccupied
+SOC = 1                 ! soc
+E_FERMI = 8.053362        ! e-fermi
+/
+
+&PARAMETERS
+OmegaNum = 201        ! omega number
+OmegaMin =  -1.1     ! energy interval
+OmegaMax =   1.1     ! energy interval
+Nk1 =31            ! Kmesh(1) for KCUBE_BULK
+Nk2 =31            ! Kmesh(2) for KCUBE_BULK
+Nk3 =31            ! Kmesh(3) for KCUBE_BULK
+Fermi_broadening=0.001
+/
+
+
+KCUBE_BULK
+ 0.00  0.00  0.00   ! Original point for 3D k plane !-0.50 -0.50 - 0.50   ! Original point for 3D k plane
+ 1.00  0.00  0.00   ! The first vector to define 3d k space plane
+ 0.00  1.00  0.00   ! The second vector to define 3d k space plane
+ 0.00  0.00  1.00   ! The third vector to define 3d k cube
+

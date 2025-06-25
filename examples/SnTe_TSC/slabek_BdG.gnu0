@@ -1,9 +1,13 @@
 set encoding iso_8859_1
 #set terminal  postscript enhanced color
 #set output 'slabek_BdG.eps'
+
+set terminal pdf enhanced color font ",24"
+set output 'slabek_BdG.pdf' 
+
 #set terminal  pngcairo truecolor enhanced  font ",60" size 1920, 1680
-set terminal  png truecolor enhanced  font ",60" size 1920, 1680
-set output 'slabek_BdG.png'
+#set terminal  png truecolor enhanced  font ",60" size 1920, 1680
+#set output 'slabek_BdG.png'
 set palette defined ( 0  "green", 5 "yellow", 10 "red" )
 set style data linespoints
 unset ztics
@@ -18,15 +22,15 @@ set view 0,0
 set ylabel offset -1, 0 
 set xrange [0:    1.40843]
 set ylabel "Energy (eV)"
-set yrange [  -0.2:   0.2]
+set yrange [  -0.1:  0.1]
 set xtics ("  G"    0.00000,"  X"    0.70421,"  M"    1.40843)
-set arrow from    0.70421,  -0.2 to    0.70421,   0.2 nohead
+set arrow from    0.70421,  -0.1 to    0.70421,   0.1 nohead
 #rgb(r,g,b) = int(r)*65536 + int(g)*256 + int(b)
-#plot 'slabek.dat' u 1:2:(rgb(255,$3, 3)) w lp lw 2 pt 7  ps 1 lc rgb variable
+#plot 'slabek_BdG.dat' u 1:2:(rgb(255,$3, 3)) w lp lw 2 pt 7  ps 1 lc rgb variable
 # (a) 
 # plot the top and bottom surface's weight together
-#plot 'slabek.dat' u 1:2:($3+$4) w lp lw 2 pt 7  ps 1 lc palette
+#plot 'slabek_BdG.dat' u 1:2:($3+$4) w lp lw 2 pt 7  ps 1 lc palette
 # (b) 
 # plot top and bottom surface's weight with red and blue respectively
 set palette defined ( -1  "blue", 0 "grey", 1 "red" )
-plot 'slabek_BdG.dat' u 1:2:($4-$3) w lp lw 2 pt 7  ps 1 lc palette
+plot 'slabek_BdG.dat' u 1:2:($4-$3) w lp lw 0.1 pt 7  ps 0.1 lc palette

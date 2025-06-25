@@ -1,0 +1,63 @@
+&TB_FILE
+Hrfile = 'H.dat'
+Overlapfile = 'S.dat'
+Package = 'OPENMX'
+Is_Sparse_Hr = T
+Is_Sparse = F
+Orthogonal_Basis = F
+/
+
+LATTICE
+Angstrom
+-2.069  -3.583614  0.000000     ! crystal lattice information
+ 2.069  -3.583614  0.000000
+ 0.000   2.389075  9.546667
+
+ATOM_POSITIONS
+5                               ! number of atoms for projectors
+Direct                          ! Direct or Cartisen coordinate
+ Bi 0.3990    0.3990    0.6970
+ Bi 0.6010    0.6010    0.3030
+ Se 0.0000    0.0000    0.5000
+ Se 0.2060    0.2060    0.1180
+ Se 0.7940    0.7940    0.8820
+
+PROJECTORS
+ 26 26 19 19 19          ! number of projectors
+Bi s s s px py pz px py pz dz2  dx2-y2 dxy dxz dyz dz2  dx2-y2 dxy dxz dyz fz3 fxz2 fyz2 fzx2 fxyz fx3 fy3x2 
+Bi s s s px py pz px py pz dz2  dx2-y2 dxy dxz dyz dz2  dx2-y2 dxy dxz dyz fz3 fxz2 fyz2 fzx2 fxyz fx3 fy3x2
+Se s s s px py pz px py pz dz2  dx2-y2 dxy dxz dyz dz2  dx2-y2 dxy dxz dyz
+Se s s s px py pz px py pz dz2  dx2-y2 dxy dxz dyz dz2  dx2-y2 dxy dxz dyz
+Se s s s px py pz px py pz dz2  dx2-y2 dxy dxz dyz dz2  dx2-y2 dxy dxz dyz
+
+!> bulk band structure calculation flag
+&CONTROL
+BulkBand_calc         = F
+Z2_3D_calc            = T
+Wanniercenter_calc    = T
+/
+
+&SYSTEM
+NumOccupied = 48        ! NumOccupied
+SOC = 1                 ! soc
+E_FERMI = -4.4195        ! e-fermi
+/
+
+
+&PARAMETERS
+Nk1 = 41            ! number k points  odd number would be better
+Nk2 = 41            ! number k points  odd number would be better
+/
+
+
+KPATH_BULK            ! k point path
+4              ! number of k line only for bulk band
+G 0.00000 0.00000 0.0000 Z 0.00000 0.00000 0.5000
+Z 0.00000 0.00000 0.5000 F 0.50000 0.50000 0.0000
+F 0.50000 0.50000 0.0000 G 0.00000 0.00000 0.0000
+G 0.00000 0.00000 0.0000 L 0.50000 0.00000 0.0000  
+
+KPLANE_BULK
+ 0.00  0.00  0.00   ! Original point for 3D k plane 
+ 1.00  0.00  0.00   ! The first vector to define 3d k space plane
+ 0.00  0.50  0.00   ! The second vector to define 3d k space plane
