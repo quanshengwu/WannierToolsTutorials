@@ -1,102 +1,68 @@
-# README
+# WannierTools
 
-## 目录结构
+![wanniertools-logo](wt-logo.jpg)
 
-```bash
-wt2025/
-├── bin/                              # 可执行文件目录，包含 wt.x, wannier90.x 等（在自己的集群上需要自己编译安装）
-├── examples/                         # 示例输入文件和教程资料
-├── WannierTools_tutorial_2024_liyang.pdf  # 中文版 WannierTools 使用教程
-├── WannierTools理论基础和软件介绍-吴泉生.pdf # 理论基础及软件介绍
-├── env.sh                            # 环境配置脚本，配置python环境，并将模块加载和 PATH 设置添加到 ~/.bashrc
-├── sub-wt.sh                         # SLURM 提交脚本，用于在计算节点运行 wt.x
-├── sub-w90.sh                        # SLURM 提交脚本，用于在计算节点运行 wannier90.x
-├── sub-vasp_std.sh                   # SLURM 提交脚本，用于在计算节点运行 vasp_std
-├── sub-vasp_ncl.sh                   # SLURM 提交脚本，用于在计算节点运行 vasp_ncl
-├── sub-python.sh                     # SLURM 提交脚本，用于在计算节点运行 python
-└── README.md                         # 本文档
-```
+WannierTools 是一个用于研究新型拓扑材料的开源软件包。它提供了一系列强大的工具，用于计算拓扑不变量、表面态、能带结构等。
 
----
+## 📚 资源链接
 
-## 环境配置（env.sh）（仅仅适用于本次培训会使用的并行科技集群，自己集群需要自己配置）
+* **源代码:** [https://github.com/quanshengwu/wannier_tools](https://github.com/quanshengwu/wannier_tools)
+* **官方网站:** [https://www.wanniertools.org](https://www.wanniertools.org)
+* **官方文档:** [http://www.wanniertools.com](http://www.wanniertools.com)
+* **培训手册:** [https://github.com/quanshengwu/WannierToolsTutorials](https://github.com/quanshengwu/WannierToolsTutorials)
+* **QQ 交流群:** 709225749
 
-`env.sh` 脚本将以下内容追加到用户的 `~/.bashrc` 中，并自动执行 `source ~/.bashrc`：
+## ✨ 特点
 
-```bash
-# 1) 加载 MPI & ARPACK
-module load intel/intelcompiler/2020.4
+* **多平台支持**: 兼容 Linux、macOS ， Windows 操作系统正在在开发中。
+* **并行计算**: **目前仅 macOS 支持基于 MPI 的并行计算**，Linux 和 Windows 平台的并行功能仍在开发中。
+* **易于安装**: 提供预编译的 wheel 包，简化了安装过程，无需复杂的编译步骤。
+* **功能全面**: 支持 WannierTools 的所有核心功能，满足科研和应用需求。
 
-# 2) 加载 codna 的 base 环境（conda）
-source /online1/paratera_wx_group/pwx_share/soft/conda/etc/profile.d/conda.sh
+## 🚀 安装指南
 
-# 3) 将可执行文件加入 PATH (包括 wt.x, vasp_std, vasp_ncl, vasp_gam, wannier90.x, tgtbgen)
-export PATH="$HOME/data/wt2025/bin/:$PATH"
-```
-
-
-### 使用方法
-
-1. 在 `wt2025/` 目录下，执行脚本：
-
-   ```bash
-   source env.sh
-   ```
-2. 脚本会自动激活conda的base环境，并提示即将追加到 `~/.bashrc` 的内容，按回车继续。
-3. 运行完成后，配置立即生效（此时命令行提示符会出现`（base）`前缀）。
-
-
-确认下面命令可用：
+我们推荐通过 pip 安装 `wannier-tools`[https://test.pypi.org/project/wannier-tools]。
 
 ```bash
-module list      # 查看已加载的模块
-which wt.x       # 应能找到 wt.x 可执行路径 （～/data/wt2025/bin/wt.x）
-which python     # 查看python路径 (base环境下应该在此处/online1/paratera_wx_group/pwx_share/soft/conda/bin/python)
+pip install -i https://test.pypi.org/simple/ wannier-tools
 ```
 
----
+### 依赖环境
 
-## 提交作业（需根据自己集群的实际情况修改）
+* **操作系统**:
 
-`sub-wt.sh` 是一个简洁的 SLURM 提交脚本，用于将 `wt.x` 并行任务提交到集群 (类似的，还有sub-python.sh, sub-w90.sh, sub-vasp_std.sh等等)：
+  * **Linux**: CentOS 7 及以上版本（仅支持串行计算）
+  * **macOS**: 版本 14.6 (Sonoma) 及以上，**仅支持 Apple Silicon (ARM) 芯片**（支持串行和并行计算）
+  * **Windows**: 功能仍在开发中（暂不支持运行）
+* **Python:** 3.9 - 3.12 版本
+* **NumPy:** >= 2.0
+* **MPI:** 无需额外安装。
+
+## 使用
 
 ```bash
-#!/bin/bash
-#SBATCH -p intel                # 分区
-#SBATCH -N 1                    # 节点数
-#SBATCH -n 64                   # MPI 进程数
-#SBATCH -t 02:00:00             # 最长运行时间
-#SBATCH -J wanniertools         # 作业名
-#SBATCH -o out                  # 标准输出
-#SBATCH -e err                  # 标准错误
+# 串行运行（适用于所有平台）
+# 默认输入文件为当前目录下的 wt.in
+# 如需指定其他输入文件，可使用参数 -i 指定文件
+wt-py -i wt.in
 
-module load intel/intelcompiler/2020.4
-export PATH=~/data/wt2025/bin/:$PATH
-# 并行运行 wt.x
-mpirun wt.x
+# 并行运行（仅限 macOS）
+# <N> 是并行进程数，例如 4
+wt-py -n 4 -i wt.in
 ```
 
-### 提交命令
+## 平台功能支持
 
-1. 确保已配置好环境：
+| 功能        | Linux      | macOS          | Windows        |
+| --------    | ---------- | -------------- | ------------- |
+| 串行计算     | ✅         | ✅           | ❌ (开发中)   |
+| MPI 并行计算 | ❌ (开发中) | ✅           | ❌ (开发中)   |
 
-   ```bash
-   source ~/.bashrc   # 确保 module 和 PATH 已更新
-   ```
-2. 提交作业：
+**注意：**
 
-   ```bash
-   sbatch sub-wt.sh
-   ```
-3. 查看作业运行情况：
-
-   ```bash
-   squeue         # 查看当前用户的作业列表
-   ```
-4. 日志文件在提交目录下：
-
-   * `out`：标准输出日志
-   * `err`：标准错误日志
+* **Linux 用户**：目前仅支持串行计算，无需安装 MPI。
+* **macOS 用户**：支持串行和并行计算，无需额外安装 MPI。**注意：仅支持搭载 Apple Silicon (ARM) 芯片的 Mac，不支持 Intel 芯片。**
+* **Windows 用户**：当前版本暂不支持运行，功能正在开发中。
 
 ---
 
@@ -115,30 +81,20 @@ mpirun wt.x
    ```bash
    cd examples/Bi2Se3
    ```
-2. 仔细阅读该目录下的 `README.txt`（如果有），确认输入文件命名规则及运行步骤。
-3. 在示例目录下执行：
+2. 仔细阅读该目录下的 `README.txt`（如果有），确认输入文件为 `wt.in`。
+3. 在示例目录下执行 `wt-py`：
 
    ```bash
-   cp ~/data/wt2025/sub-wt.sh .
-   sbatch sub-wt.sh
+   # 串行运行
+   wt-py
+
+   # 或指定输入文件
+   wt-py -i wt.in
+
+   # 并行运行 (仅限 macOS)
+   wt-py -n 4
    ```
 4. 等待任务完成，查看输出结果，并对照教程分析。
-
----
-
-## 可执行文件（bin/）
-
-`bin/` 目录下包含（在自己的集群上需要自己编译安装）：
-
-* `wt.x`：WannierTools 主程序（并行版、MPI 支持）
-* `wannier90.x`：Wannier90 程序，可进行 Wannier 函数构建
-* `vasp_std`、`vasp_ncl`、`vasp_gam` ：VASP可执行文件
-* `tgtbgen` ：生成石墨烯转角/非转角的POSCAR/哈密顿量
-确保：
-
-```bash
-ls ~/wt2025/bin/   # 应列出以上可执行文件
-```
 
 ---
 
@@ -149,10 +105,16 @@ ls ~/wt2025/bin/   # 应列出以上可执行文件
 
 ---
 
+## 许可证
+
+本项目遵循 **GNU General Public License 第3版或更高版本**（GNU GPLv3+）。
+
+---
+
 ## 联系方式
 
 * 如有疑问，可联系：
 
   * 吴泉生：[quansheng.wu@iphy.ac.cn](mailto:quansheng.wu@iphy.ac.cn)
 
-欢迎大家一起交流，共同学习 WannierTools 软件！
+欢迎大家一起交流，共同学习 WannierTools 软件！ 
